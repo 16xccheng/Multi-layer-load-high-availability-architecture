@@ -1,0 +1,38 @@
+/* your styles go here */
+.server-attr{
+    text-align:center;
+}
+.server-img{
+    height:40%;
+    width:40%;
+}
+.line-wrap{
+    width:300px;
+    margin:0 auto;
+}
+
+.g-rect-path{
+    fill: none;
+    stroke:#d3dce6;
+    stroke-linejoin:round;
+    stroke-linecap:round;
+}
+
+.g-rect-fill{
+    fill: none;
+    stroke: #864DD9;
+    stroke-linejoin:round;
+    stroke-linecap:round;
+    stroke-dasharray: 30, 10;
+    stroke-dashoffset: 60000;
+    animation: lineMove 3000s ease-out infinite;
+}
+
+@keyframes lineMove {
+    0%{
+        stroke-dashoffset: 60000;
+    }
+    100%{
+        stroke-dashoffset: 0;
+    }
+}

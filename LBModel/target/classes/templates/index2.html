@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Home</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="/Backstage/vendor/bootstrap/css/bootstrap.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="/Backstage/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Custom Font Icons CSS-->
+    <link rel="stylesheet" href="/Backstage/css/font.css">
+    <!-- Google fonts - Muli-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="/Backstage/css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="/Backstage/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="/Backstage/img/favicon.ico">
+    <!--hightchart-->
+    <link rel="icon" href="https://static.jianshukeji.com/highcharts/images/favicon.ico">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+    <style>
+      img{
+        height:80%;
+        width:80%;
+      }
+      polyline{
+        fill:none;
+        stroke-width:4;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+      }
+    </style>
+  </head>
+
+
+  <body>
+    <header class="header">
+      <!-- 最上方导航栏 -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="search-panel">
+          <div class="search-inner d-flex align-items-center justify-content-center">
+            <div class="close-btn">Close <i class="fa fa-close"></i></div>
+            <form id="searchForm" action="#">
+              <div class="form-group">
+                <input type="search" name="search" placeholder="What are you searching for...">
+                <button type="submit" class="submit">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- 最左上角标签  ICBC-SoftLB -->
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+          <div class="navbar-header">
+            <!-- Navbar Header--><a href="index.html" class="navbar-brand">
+              <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">ICBC</strong><strong>-SoftLB</strong></div>
+              <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>
+            <!-- Sidebar Toggle Btn-->
+            <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- 导航栏下方 -->
+    <div class="d-flex align-items-stretch">
+      <!-- 左边栏 -->
+      <nav id="sidebar">
+        <!-- 头像名称 -->
+        <div class="sidebar-header d-flex align-items-center">
+          <div class="avatar"><img src="/Backstage/img/logo.jpg" alt="..." class="img-fluid rounded-circle" style="height: 100%;width:100%"></div>
+          <div class="title">
+            <h1 class="h5">多层负载均衡</h1>
+            <p>高可用架构支撑研究</p>
+          </div>
+        </div>
+  
+        <!-- 主菜单及其条目 -->
+          <span class="heading">Main Menus</span>
+          <ul class="list-unstyled">
+            <li><a href="/command/index1"> <i class="icon-grid"></i> 控制面板1 </a></li>
+            <li class="active"><a href="/command/index2"> <i class="icon-grid"></i> 控制面板2 </a></li>
+          </ul>
+        <!-- 动态监控表格 -->
+        <div id="container" style="min-width:280px;height:330px;buttom: 0;"></div>
+      </nav>
+
+      <!-- 控制面板头部 -->
+      <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Control Model</h2>
+          </div>
+        </div>
+
+        <!-- 控制面板主体 -->
+        <section class="no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row" align="center">
+              <!-- 添加服务器组 -->
+              <!-- DNS -->
+              <div class="col-lg-2">
+                <div>
+                  <div class="avatar" ><img src="/Backstage/img/server.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title">
+                    <h5 class="h5">DNS服务器</h5>
+                    <h5>ip：10.2.1.210</h5>
+                  </div>
+                </div>
+
+                <svg width="100%" height="90px" version="1.1" xmlns="http://www.w3.org/2000/svg" style="stroke-width:2">
+                  <defs>
+                    <linearGradient id="pink_purple" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" style="stop-color:rgb(249,131,218);stop-opacity:1"/>
+                      <stop offset="100%" style="stop-color:rgb(134,77,217);stop-opacity:1"/>
+                    </linearGradient>
+                  </defs>
+                  <polyline points="70,90 70,0 60,10" style="stroke:url(#pink_purple);" />
+                  <polyline points="100,0 100,90 110,80" style="stroke:url(#pink_purple);" />
+                </svg>
+
+                <div>
+                  <div class="avatar" ><img src="/Backstage/img/client.jpg" alt="..." class="img-fluid" style="height: 50%;width: 50%;margin-top: 10px"></div>
+                  <div class="title">
+                    <h5 class="h5">客户端</h5>
+                  </div>
+                </div>
+              </div>
+
+              <!-- svg划线连接服务器 -->
+              <svg width="8.33333%" height="666px" version="1.1" xmlns="http://www.w3.org/2000/svg" style="stroke-width:2">
+                <defs>
+                  <linearGradient id="pink_purple" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgb(249,131,218);stop-opacity:1"/>
+                    <stop offset="100%" style="stop-color:rgb(134,77,217);stop-opacity:1"/>
+                  </linearGradient>
+                </defs>
+                <polyline id=1 points="0,235 20,235 80,102 100,102" style="stroke:url(#pink_purple);" />
+                <polyline id=2 points="0,245 20,245 80,378 100,378" style="stroke:url(#pink_purple);" />
+              </svg>
+
+              <!-- LVS -->
+              <div class="col-lg-2">
+                <div style="height: 11%;width:100%"></div>
+
+                <div>
+                  <div class="avatar"><img src="/Backstage/img/server.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title">
+                    <h5 class="h5">LVS服务器1</h5>
+                    <h5>ip：10.2.1.233</h5>
+                    <div class="btn-group">
+                      <button type="submit" class="btn btn-secondary" host="10.2.1.233" name="kill" onclick="doLogin(this)">关机</button>
+                      <button type="submit" class="btn btn-primary" host="10.2.1.233" name="reboot" onclick="doLogin(this)">重启</button>
+                    </div>
+                  </div>
+                </div>
+                <div style="height: 18%;width:100%"></div>
+
+
+                <div>
+                  <div class="avatar"><img src="/Backstage/img/server.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title">
+                    <h5 class="h5">LVS服务器2</h5>
+                    <h5>ip：10.2.1.234</h5>
+                    <div class="btn-group">
+                      <button type="submit" class="btn btn-secondary" host="10.2.1.234" name="kill" onclick="doLogin(this)">关机</button>
+                      <button type="submit" class="btn btn-primary" host="10.2.1.234" name="reboot" onclick="doLogin(this)">重启</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- svg划线连接服务器 -->
+              <svg width="8.33333%" height="666px" version="1.1" xmlns="http://www.w3.org/2000/svg" style="stroke-width:2">
+                <defs>
+                  <linearGradient id="pink_purple" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgb(249,131,218);stop-opacity:1"/>
+                    <stop offset="100%" style="stop-color:rgb(134,77,217);stop-opacity:1"/>
+                  </linearGradient>
+                </defs>
+                <polyline id=3 points="0,95 45,95 55,85 100,85" style="stroke:url(#pink_purple);" />
+                <polyline id=4 points="0,105 20,105 75,380 100,380" style="stroke:url(#pink_purple);" />
+
+                <polyline id=5 points="0,375 20,375 75,100 100,100" style="stroke:url(#pink_purple);" />
+                <polyline id=6 points="0,385 45,385 55,395 100,395" style="stroke:url(#pink_purple);" />
+              </svg>
+
+              <!-- Haproxy -->
+              <div class="col-lg-2">
+                <div style="height: 10%;width:100%"></div>
+
+                <div>
+                  <div class="avatar"><img src="/Backstage/img/server.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title">
+                    <h5 class="h5">Haproxy服务器1</h5>
+                    <h5>ip：10.2.1.212</h5>
+                    <div class="btn-group">
+                      <button type="submit" class="btn btn-secondary" host="10.2.1.212" name="echo" onclick="doLogin(this)">关机</button>
+                      <button type="submit" class="btn btn-primary" host="10.2.1.212" name="reboot" onclick="doLogin(this)">重启</button>
+                    </div>
+                  </div>
+                </div>
+                <div style="height: 19%;width:100%"></div>
+
+                <div>
+                  <div class="avatar"><img src="/Backstage/img/server.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title">
+                    <h5 class="h5">Haproxy服务器2</h5>
+                    <h5>ip：10.2.1.213</h5>
+                    <div class="btn-group">
+                      <button type="submit" class="btn btn-secondary" host="10.2.1.213" name="echo" onclick="doLogin(this)">关机</button>
+                      <button type="submit" class="btn btn-primary" host="10.2.1.213" name="reboot" onclick="doLogin(this)">重启</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- svg划线连接服务器 -->
+              <svg width="16.66667%" height="666px" version="1.1" xmlns="http://www.w3.org/2000/svg" style="stroke-width:2">
+                <defs>
+                  <linearGradient id="pink_purple" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:rgb(249,131,218);stop-opacity:1"/>
+                    <stop offset="100%" style="stop-color:rgb(134,77,217);stop-opacity:1"/>
+                  </linearGradient>
+                </defs>
+                <polyline id=7 points="0,80 10,80 100,20 200,20" style="stroke:url(#pink_purple);" />
+                <polyline id=8 points="0,90 15,90 100,175 200,175" style="stroke:url(#pink_purple);" />
+                <polyline id=9 points="0,100 15,100 100,330 200,330" style="stroke:url(#pink_purple);" />
+                <polyline id=10 points="0,110 10,110 110,475 200,475" style="stroke:url(#pink_purple);" />
+
+                <polyline id=11 points="0,360 10,360 110,30 200,30" style="stroke:url(#pink_purple);" />
+                <polyline id=12 points="0,370 15,370 100,185 200,185" style="stroke:url(#pink_purple);" />
+                <polyline id=13 points="0,380 15,380 100,340 200,340" style="stroke:url(#pink_purple);" />
+                <polyline id=14 points="0,390 10,390 100,485 200,485" style="stroke:url(#pink_purple);" />
+              </svg>
+
+              <!-- Web -->
+              <div class="col-lg-2">
+                <div>
+                  <div class="avatar"><img src="/Backstage/img/server.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title">
+                    <h5 class="h5">Web服务器1</h5>
+                    <h5>ip：10.2.1.216</h5>
+                  </div>
+                </div>
+                <div style="height: 4%;width:100%"></div>
+
+                <div>
+                  <div class="avatar"><img src="/Backstage/img/server.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title">
+                    <h5 class="h5">Web服务器2</h5>
+                    <h5>ip：10.2.1.217</h5>
+                  </div>
+                </div>
+                <div style="height: 5%;width:100%"></div>
+
+                <div>
+                  <div class="avatar"><img src="/Backstage/img/server.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title">
+                    <h5 class="h5">Web服务器3</h5>
+                    <h5>ip：10.2.1.218</h5>
+                  </div>
+                </div>
+                <div style="height: 4%;width:100%"></div>
+
+                <div>
+                  <div class="avatar"><img src="/Backstage/img/server.jpg" alt="..." class="img-fluid"></div>
+                  <div class="title">
+                    <h5 class="h5">Web服务器4</h5>
+                    <h5>ip：10.2.1.219</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 底部监控 -->
+        <section class="no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row">
+              <!-- 左边栏监控各个服务器状态 -->
+              <div class="col-lg-6">
+                <div class="card card-c2">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th><strong style="padding-top: 6px;padding-bottom: 6px">Server Name</strong></th>
+                        <th><strong>Server IP</strong></th>
+                        <th><strong>Status</strong></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>DNS Server</td>
+                        <td>10.2.1.210</td>
+                        <td>
+                          <div class="progress" style="margin-bottom: 12px;margin-top:4px">
+                            <div id="10.2.1.210" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;background-color:#28a745"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>LVS Server</td>
+                        <td>10.2.1.233</td>
+                        <td>
+                          <div class="progress" style="margin-bottom: 12px;margin-top:4px">
+                            <div id="10.2.1.233" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;background-color:#28a745"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>LVS Server</td>
+                        <td>10.2.1.234</td>
+                        <td>
+                          <div class="progress" style="margin-bottom: 12px;margin-top:4px">
+                            <div id="10.2.1.234" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;background-color:#28a745"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Haproxy Server</td>
+                        <td>10.2.1.212</td>
+                        <td>
+                          <div class="progress" style="margin-bottom: 12px;margin-top:4px">
+                            <div id="10.2.1.212" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;background-color:#28a745"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Haproxy Server</td>
+                        <td>10.2.1.213</td>
+                        <td>
+                          <div class="progress" style="margin-bottom: 12px;margin-top:4px">
+                            <div id="10.2.1.213" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;background-color:#28a745"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Web Server</td>
+                        <td>10.2.1.216</td>
+                        <td>
+                          <div class="progress" style="margin-bottom: 12px;margin-top:4px">
+                            <div id="10.2.1.216" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;background-color:#28a745"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Web Server</td>
+                        <td>10.2.1.217</td>
+                        <td>
+                          <div class="progress" style="margin-bottom: 12px;margin-top:4px">
+                            <div id="10.2.1.217" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;background-color:#28a745"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Web Server</td>
+                        <td>10.2.1.218</td>
+                        <td>
+                          <div class="progress" style="margin-bottom: 12px;margin-top:4px">
+                            <div id="10.2.1.218" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;background-color:#28a745"></div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Web Server</td>
+                        <td>10.2.1.219</td>
+                        <td>
+                          <div class="progress" style="margin-bottom: 12px;margin-top:4px">
+                            <div id="10.2.1.219" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;background-color:#28a745"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- 右边栏记录状态总和 -->
+              <div class="col-lg-6">
+                <div class="stats-2-block block d-flex">
+                  <div class="stats-2 d-flex">
+                    <div class="stats-2-arrow height"><i class="fa fa-caret-up"></i></div>
+                    <div class="stats-2-content"><strong id="success" class="d-block">9</strong><span class="d-block">ALIVE SERVER</span>
+                      <div class="progress progress-template progress-small">
+                        <div role="progressbar" style="width: 100%;" class="progress-bar progress-bar-template progress-bar-small bg-success"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="stats-2 d-flex">
+                    <div class="stats-2-arrow low"><i class="fa fa-caret-down"></i></div>
+                    <div class="stats-2-content"><strong id="fail" class="d-block">0</strong><span class="d-block">NOT WORK SERVER</span>
+                      <div class="progress progress-template progress-small">
+                        <div role="progressbar" style="width: 100%;" class="progress-bar progress-bar-template progress-bar-small bg-danger"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 团队成员信息 -->
+                <div class="messages-block block">
+                  <h5>GROUP MEMBER</h5>
+                  <div class="messages"><a href="#" class="message d-flex align-items-center">
+                    <div class="profile"><img src="/Backstage/img/avatar-3.jpg" alt="..." class="img-fluid"></div>
+                    <div class="content">   <strong class="d-block">吴雨晨</strong></div></a><a href="#" class="message d-flex align-items-center">
+
+                    <div class="profile"><img src="/Backstage/img/avatar-2.jpg" alt="..." class="img-fluid"></div>
+                    <div class="content">   <strong class="d-block">程晓聪</strong></div></a><a href="#" class="message d-flex align-items-center">
+
+                    <div class="profile"><img src="/Backstage/img/avatar-5.jpg" alt="..." class="img-fluid"></div>
+                    <div class="content">   <strong class="d-block">王艺航</strong></div></a><a href="#" class="message d-flex align-items-center">
+
+                    <div class="profile"><img src="/Backstage/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
+                    <div class="content">   <strong class="d-block">舒宁杰</strong></div></a><a href="#" class="message d-flex align-items-center">
+
+                    <div class="profile"><img src="/Backstage/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
+                    <div class="content">   <strong class="d-block">韩亚权</strong></div></a></div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 网页脚注--作者 -->
+        <footer class="footer">
+          <div class="footer__block block no-margin-bottom">
+            <div class="container-fluid text-center">
+              <p class="no-margin-bottom">来自 ---- 口是心非 ---- 程晓聪 ----（2019.7-8 工行实习）</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- JavaScript files-->
+    <script src="/Backstage/vendor/jquery/jquery.min.js"></script>
+    <script src="/Backstage/vendor/popper.js/umd/popper.min.js"> </script>
+    <script type="text/javascript" src="/Backstage/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Backstage/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="/Backstage/vendor/chart.js/Chart.min.js"></script>
+    <script src="/Backstage/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="/Backstage/js/charts-home.js"></script>
+    <script src="/Backstage/js/front.js"></script>
+    <!-- <script type="text/javascript" src="@{/js/jequery.min.js}"></script> -->
+    <script type="text/javascript" src="/jquery-validation/lib/jquery-1.11.1.js"></script>
+    <!-- layer -->
+    <script type="text/javascript" src="/layer/layer.js"></script>
+    <!--chart-->
+    <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/themes/dark-unica.js"></script>
+  </body>
+
+  <script type="text/javascript">
+    // highchart基本配置
+    Highcharts.setOptions({
+      global: {
+        useUTC: false
+      },
+    });
+
+    // 绘制动态点并维持点的栈
+    function activeLastPointToolip(chart) {
+      var points = chart.series[0].points;
+      chart.tooltip.refresh(points[points.length -1]);
+    }
+
+    // 指定id='container' 并进行绘制
+    var chart = Highcharts.chart('container', {
+      // 表格画板配置
+      chart: {
+        type: 'spline', // 画图线条样式
+        marginRight: 10, // 右边距
+        backgroundColor: "#34373D", // 背景颜色
+        // 设置时间函数动态生成点
+        events: {
+          load: function () {
+            var series = this.series[0], chart = this;
+            activeLastPointToolip(chart);
+            setInterval(function () {
+              var x = (new Date()).getTime(); // 当前时间
+              var y = document.getElementById("success").innerText; // 存活服务器值(字符串)
+              series.addPoint([x, Number(y)], true, true); // 表格画板绘制
+              activeLastPointToolip(chart); // 入栈
+            }, 1000); // 1秒生成一个
+          }
+        }
+      },
+
+      // 表格名称
+      title: {
+        text: '服务器在线实时数据'
+      },
+
+      // 表格横坐标
+      xAxis: {
+        type: 'datetime', // 横坐标类型
+        tickPixelInterval: 150,  // 两个基准点间的距离
+        lineColor: "#7F4DC8",  // x轴的颜色
+      },
+
+      // 表格纵坐标
+      yAxis: {
+        // 名称
+        title: {
+          text: null,
+        }
+      },
+
+      // 画板中的提示框（可包含点的信息）
+      tooltip: {
+        formatter: function () {
+          return '<b>' + this.series.name + '</b><br/>' +
+                  Highcharts.dateFormat('%H:%M:%S', this.x) + '<br/>' +
+                  Highcharts.numberFormat(this.y, 2);
+        }
+      },
+
+      // 标注（多个变量比较才需要使用）
+      legend: {
+        enabled: false
+      },
+
+      // 版权信息（false表示不显示）
+      credits: {
+        enabled: false
+      },
+
+      // 边
+      series: [{
+        name: '存活数量',
+        // 表示y<10的值都要变成紫色
+        zoneAxis: 'y',
+        zones: [{
+          value: 10,
+          color: "#7F4DC8",
+        }],
+        marker:{//线上数据点
+          symbol:'circle',//圆点显示
+          radius:0,
+          lineWidth:0,
+        },
+        data: (function () {
+          // 生成初始值
+          var data = [], time = (new Date()).getTime(), i;
+          // 生成20个单位的初始值并初始化data的大小
+          for (i = -19; i <= 0; i += 1) {
+            data.push({
+              x: time + i * 1000,
+              y: 9,
+            });
+          }
+          return data;
+        }()),
+      }]
+    });
+
+    // 全局变量
+    var DNS = [1, 2];
+    var LVS1 = [1, 3, 4];
+    var LVS2 = [2, 5, 6];
+    var HAP1 = [3, 5, 7, 8, 9, 10];
+    var HAP2 = [4, 6, 11, 12, 13, 14];
+    var Web1 = [7, 11];
+    var Web2 = [8, 12];
+    var Web3 = [9, 13];
+    var Web4 = [10, 14];
+
+    //线
+    var lineMap = new Map();
+
+    lineMap.set("10.2.1.210",DNS);
+    lineMap.set("10.2.1.233",LVS1);
+    lineMap.set("10.2.1.234",LVS2);
+    lineMap.set("10.2.1.212",HAP1);
+    lineMap.set("10.2.1.213",HAP2);
+    lineMap.set("10.2.1.216",Web1);
+    lineMap.set("10.2.1.217",Web2);
+    lineMap.set("10.2.1.218",Web3);
+    lineMap.set("10.2.1.219",Web4);
+
+    // 时间间隔
+    var timeCycle = 5000;
+
+    //页面初始化
+    $(function() {
+      check();
+    });
+
+    function check() {
+      $.ajax({
+        url : "/server/check",
+        type : "GET",
+        data : {
+          num : 2,
+        },
+        success : function (data) {
+          if(data.code == 500200){
+            if(data.data != null){
+              draw(data.data);
+              setTimeout(check,timeCycle);
+            }
+          }
+        },
+        error : function () {
+          console.log("渲染失败");
+          setTimeout(check,timeCycle);
+        },
+        complete : function () {
+        }
+      })
+    }
+
+    function draw(data) {
+      var success = 0;
+      var fail = 0;
+      var res = Object.keys(data).sort(function(a,b){ return data[b]-data[a]; });
+      for(var key in res){
+        if(data[res[key]]==1){
+          document.getElementById(res[key]).style.backgroundColor = "#28a745";
+          setLineColor(res[key], 1);
+          success++;
+        }else{
+          document.getElementById(res[key]).style.backgroundColor = "#dc3545";
+          setLineColor(res[key], 0);
+          fail++;
+        }
+      }
+      document.getElementById("success").innerText = String(success);
+      document.getElementById("fail").innerText = String(fail);
+    }
+
+    function doLogin(e) {
+      var host = e.getAttribute("host");
+      var command = e.getAttribute("name");
+      if (command === "kill") {
+        command = "/usr/local/javaWorkHouse/controlKeepalived.sh"
+      } else if(command === "echo"){
+        var date = new Date();
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        var nowDate = Y+M+D+h+m+s;
+        command = command + " Be visited at " + nowDate + " >> /usr/local/javaWorkHouse/access.log";
+      }
+
+      $.ajax({
+        url : "/command/do_command",
+        type : "GET",
+        data : {
+          host : host,
+          command : command,
+        },
+        success : function (data) {
+          if(data.code == 500200){
+            layer.msg("服务器："+ host +" 执行命令成功");
+            setLineColor(host, 0);
+          }else{
+            layer.msg("服务器："+ host + data.msg);
+          }
+        },
+      })
+    }
+
+    function setLineColor(host, status) {
+      var lineList=lineMap.get(host);
+      for(var i=0,len=lineList.length;i<len;i++){
+        document.getElementById(lineList[i]).style.opacity = status;
+      }
+    }
+  </script>
+</html>
